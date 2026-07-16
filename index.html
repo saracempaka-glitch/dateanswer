@@ -1,41 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Question For You ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #FFF5F8;
-      text-align: center;
-      padding: 40px;
-    }
+<title>A Question For You ❤️</title>
 
-    h1 {
-      color: #ff4d88;
-    }
+<style>
 
-    p {
-      font-size: 20px;
-    }
-  </style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #FFF5F8;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #ff4d88;
+    font-size: 36px;
+}
+
+p {
+    font-size: 22px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.cat {
+    width: 220px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cat:hover {
+    transform: scale(1.08);
+}
+
+#message {
+    margin-top: 40px;
+    font-size: 28px;
+    color: #ff4d88;
+    font-weight: bold;
+}
+
+</style>
+
 </head>
+
 
 <body>
 
 <h1>You asked me on a date... ❤️</h1>
 
-<p>Before I answer... which cat do you think is me right now? 🐱</p>
+<p>
+Before I answer...<br>
+Which cat do you think is me right now? 🐱
+</p>
 
-<div style="display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-top:30px;">
 
-  <img src="grumpy.jpg" width="220" style="border-radius:20px; cursor:pointer;">
+<div class="container">
 
-  <img src="happy.jpg" width="220" style="border-radius:20px; cursor:pointer;">
+<img 
+src="grumpy.jpg" 
+class="cat"
+onclick="wrong1()"
+>
 
-  <img src="sleepy.jpg" width="220" style="border-radius:20px; cursor:pointer;">
+<img 
+src="happy.jpg" 
+class="cat"
+onclick="correct()"
+>
+
+<img 
+src="sleepy.jpg" 
+class="cat"
+onclick="wrong2()"
+>
 
 </div>
+
+
+<div id="message"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+
+<script>
+
+function wrong1(){
+
+document.getElementById("message").innerHTML =
+"😂 Nope! I'm not grumpy... you just made me happy!";
+
+}
+
+
+function wrong2(){
+
+document.getElementById("message").innerHTML =
+"🤣 Nope! I'm too excited to be sleepy! Try again ❤️";
+
+}
+
+
+function correct(){
+
+confetti({
+    particleCount: 200,
+    spread: 100,
+    origin: {
+        y: 0.6
+    }
+});
+
+
+document.getElementById("message").innerHTML =
+"❤️ YES!! That's me! <br><br> I would absolutely love to go on a date with you 🥰";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
